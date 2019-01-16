@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prueba_flutter/GridViewPantalla.dart';
 import 'package:prueba_flutter/SecondScreen.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -15,12 +16,14 @@ class MyHomePage extends StatefulWidget {
 
   final String title;
 
+
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  StatefulWidget screen = SecondScreen();
 
   void _incrementCounter() {
     setState(() {
@@ -60,15 +63,25 @@ class _MyHomePageState extends State<MyHomePage> {
             ListTile(
               leading: Icon(Icons.home),
               title: Text("Home"),
+              onTap: () {
+                setState(() {
+                  screen = SecondScreen();
+                });
+              },
             ),
             ListTile(
               leading: Icon(Icons.settings),
               title: Text("Settings"),
+              onTap: () {
+                setState(() {
+                  screen = GridViewPantalla(0);
+                });
+              },
             ),
           ],
         ),
       ),
-      body: SecondScreen()
+      body: this.screen
     );
   }
 }
